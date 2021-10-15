@@ -39,7 +39,6 @@ const answerQuestion = (question) => {
     dispatch(showLoading());
     _saveQuestionAnswer(question)
       .then(() => {
-        console.log(question);
         dispatch(hideLoading());
         dispatch(answerQuestionAction(question));
       })

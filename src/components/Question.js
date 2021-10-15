@@ -30,6 +30,9 @@ const Question = () => {
       }
       return { found: true, user, voted, author, avatar, optionOne, optionTwo };
     });
+  if (!found) {
+    return 'Not valid Link';
+  }
   const totalVotes = optionOne.votes + optionTwo.votes || 0;
   const optionOnePer = `${(optionOne.votes / totalVotes).toFixed(2) * 100}%`;
   const optionTwoPer = `${(optionTwo.votes / totalVotes).toFixed(2) * 100}%`;
@@ -39,9 +42,6 @@ const Question = () => {
     }
   };
 
-  if (!found) {
-    return 'Error';
-  }
   return (
     <section className='home'>
       <div className='container'>
