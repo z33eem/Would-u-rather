@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 const LeaderBoardCard = ({ name, avatarURL, answers, questions, total }) => {
   return (
