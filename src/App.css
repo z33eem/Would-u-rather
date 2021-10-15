@@ -1,38 +1,348 @@
-.App {
-  text-align: center;
+/* General Classes */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif, Arial, Helvetica;
+  line-height: 1.7;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*::not(.navbar),
+*::after,
+*::before {
+  transition: 0.5s all ease-in-out;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: #f9f8f1;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+.flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+ul {
+  list-style: none;
 }
-
-@keyframes App-logo-spin {
+a {
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+}
+.hidden {
+  opacity: 0;
+}
+@keyframes fade-in {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+.fade-in-element {
+  animation: fade-in 0.8s;
+}
+/* Navbar */
+.navbar {
+  background: #444;
+  color: #fff;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+.navbar a {
+  color: #fff;
+}
+.navbar .container {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.navbar ul li a {
+  display: block;
+  padding: 15px 15px;
+  position: relative;
+}
+.navbar ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 0%;
+  height: 1px;
+  background-color: #999;
+}
+.navbar ul li a.active::after,
+.navbar ul li:hover a::after {
+  left: 5%;
+  width: 90%;
+}
+.navbar .user-info {
+  align-items: center;
+}
+.navbar .user-info img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+.navbar .user-info p {
+  margin-left: 10px;
+}
+.navbar .user-info button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background: crimson;
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+.navbar .user-info button:hover {
+  opacity: 0.9;
+}
+
+/* Home */
+.btn-container {
+  margin-bottom: 50px;
+}
+
+.btn-container button {
+  width: 50%;
+  cursor: pointer;
+  padding: 20px 0;
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+  position: relative;
+}
+.btn-container button::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 0%;
+  height: 1px;
+  background-color: #111;
+}
+.btn-container button.active::after,
+.btn-container button:hover::after {
+  left: 5%;
+  width: 90%;
+}
+
+.question-box {
+  background: #f9f6f1;
+  padding: 25px;
+  box-shadow: 2px 2px 10px rgba(6, 6, 6, 0.1);
+  margin-bottom: 50px;
+}
+.question-box:hover {
+  box-shadow: 2px 2px 10px rgba(6, 6, 6, 0.2);
+}
+.question-box h3 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  font-weight: normal;
+  color: #666;
+}
+.question-box h3 span {
+  color: crimson;
+  font-size: 28px;
+  font-weight: bold;
+}
+.question-box .box img {
+  width: 120px;
+  border-radius: 50%;
+}
+.question-box .box .q-data {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.question-box .box .q-data h4 {
+  font-size: 40px;
+  color: #444;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.question-box .box .q-data button {
+  cursor: pointer;
+  padding: 12px 60px;
+  border: 1px solid crimson;
+  font-weight: bold;
+  font-size: 22px;
+  color: crimson;
+  background-color: transparent;
+}
+.question-box .box .q-data button:hover {
+  background-color: crimson;
+  color: #fff;
+}
+
+.add-q h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.form {
+  justify-content: center;
+}
+.form div {
+  width: fit-content;
+  border: 1px solid #999;
+  padding: 40px 40px;
+  border-radius: 10px;
+  min-width: 500px;
+}
+.form h3 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.input {
+  display: block;
+  padding: 10px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border: 1px solid #999;
+  font-size: 18px;
+  width: 100%;
+}
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: crimson;
+  border: 0;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+.sigin .form {
+  margin-top: 150px;
+  text-align: center;
+}
+.sigin .form h3 {
+  font-size: 40px;
+}
+.sigin .form p {
+  font-size: 18px;
+}
+.selectBox {
+  cursor: pointer;
+  padding: 15px;
+  margin: auto;
+  display: block;
+  margin-top: 30px;
+}
+
+.question-box .box .answer-q-data {
+  margin-left: 50px;
+}
+
+.question-box .box .answer-q-data .option {
+  font-weight: bold;
+  line-height: 1.9;
+  font-size: 22px;
+  color: #555;
+  padding-bottom: 50px;
+}
+.question-box .box .answer-q-data .option span.circle {
+  width: 30px;
+  height: 30px;
+  margin-bottom: -5px;
+  display: inline-block;
+  border: 4px solid crimson;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.question-box .box .answer-q-data .option:not(.disabled) span.circle:hover,
+.question-box .box .answer-q-data .option.active span.circle {
+  box-shadow: 2px 2px 10px crimson;
+}
+.question-box .box .answer-q-data .option.active span.circle:after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  top: 3px;
+  background-color: crimson;
+  border-radius: 50%;
+}
+
+.question-box .box .answer-q-data .option div.bar {
+  height: 15px;
+  width: 350px;
+}
+.question-box .box .answer-q-data div.option .bar span.bar {
+  background-color: #ccc;
+  display: inline-block;
+  height: 15px;
+  width: 300px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.question-box .box .answer-q-data div.option .bar span.bar-progress {
+  position: absolute;
+  height: 15px;
+  background-color: crimson;
+  animation: forwards fill-bar 1.4s;
+}
+.question-box .box .answer-q-data div.option.disabled .bar span.bar-progress {
+  background-color: #888;
+}
+@keyframes fill-bar {
+  from {
+    width: 0;
+  }
+  to {
+    width: inherit;
+  }
+}
+
+.leaderboard {
+  font-size: 18px;
+  line-height: 2rem;
+}
+.leaderboard span {
+  color: crimson;
+}
+.number {
+  margin-left: 5px;
+}
+@media (max-width: 600px) {
+  .box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .answer-q-data {
+    margin: auto;
+    min-width: 320px;
+  }
+  .question-box {
+    padding: 10px;
+  }
+  .form div {
+    min-width: auto;
+    width: 100%;
+    padding: 15px;
+  }
+  .question-box .box .answer-q-data .option div.bar {
+    max-width: 250px;
+  }
+  .question-box .box .answer-q-data div.option .bar span.bar {
+    width: 90%;
   }
 }
