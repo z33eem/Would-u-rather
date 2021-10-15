@@ -31,7 +31,8 @@ const Question = () => {
       return { found: true, user, voted, author, avatar, optionOne, optionTwo };
     });
   const totalVotes = optionOne.votes + optionTwo.votes || 0;
-
+  const optionOnePer = `${(optionOne.votes / totalVotes).toFixed(2) * 100}%`;
+  const optionTwoPer = `${(optionTwo.votes / totalVotes).toFixed(2) * 100}%`;
   const handleVoting = (option) => {
     if (!voted) {
       dispatch(answerQuestion({ authedUser: user, qid: id, answer: option }));
@@ -79,13 +80,15 @@ const Question = () => {
                         <span className='bar'>
                           <span
                             style={{
-                              width: `${(optionOne.votes / totalVotes) * 100}%`,
+                              width: optionOnePer,
                             }}
                           >
                             <span className='bar-progress lesser'></span>
                           </span>
                         </span>
-                        <span className='number'>{optionOne.votes}</span>
+                        <span className='number'>
+                          {optionOne.votes}({optionOnePer})
+                        </span>
                       </div>
                     )}
                   </div>
@@ -108,13 +111,15 @@ const Question = () => {
                         <span className='bar'>
                           <span
                             style={{
-                              width: `${(optionTwo.votes / totalVotes) * 100}%`,
+                              width: optionTwoPer,
                             }}
                           >
                             <span className='bar-progress'></span>
                           </span>
                         </span>
-                        <span className='number'>{optionTwo.votes}</span>
+                        <span className='number'>
+                          {optionTwo.votes}({optionTwoPer})
+                        </span>
                       </div>
                     )}
                   </div>
